@@ -129,7 +129,7 @@ impl<T: Clone + Debug + PartialEq + Default> Array<T> {
                 return true;
             }
         }
-        return false;
+         false
     }
 
     // 查找数组中元素e所在的索引，如果不存在元素e,则返回-1
@@ -139,7 +139,7 @@ impl<T: Clone + Debug + PartialEq + Default> Array<T> {
                 return Some(i);
             }
         }
-        return None;
+         None
     }
 
     // 从数组中删除index位置的元素，返回删除的元素
@@ -161,12 +161,12 @@ impl<T: Clone + Debug + PartialEq + Default> Array<T> {
 
     // 从数组中删除最后一个元素，返回删除的元素
     pub fn remove_last(&mut self) -> Option<T> {
-        return self.remove(self.size - 1);
+         self.remove(self.size - 1)
     }
 
     // 从数组中删除第一个元素，返回
     pub fn remove_first(&mut self) -> Option<T> {
-        return self.remove(0);
+         self.remove(0)
     }
 
     // 从数组中删除元素e

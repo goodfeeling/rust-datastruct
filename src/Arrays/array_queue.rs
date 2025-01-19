@@ -1,14 +1,6 @@
-use std::fmt::Debug;
-
 use super::arr::Array;
-
-pub trait Queue<E> {
-    fn get_size(&self) -> usize;
-    fn is_empty(&self) -> bool;
-    fn enqueue(&mut self, e: E);
-    fn dequeue(&mut self) -> Option<E>;
-    fn get_front(&self) -> Option<E>;
-}
+use crate::Arrays::queue::Queue;
+use std::fmt::Debug;
 
 pub struct ArrayQueue<T> {
     pub array: Array<T>,
@@ -26,7 +18,7 @@ impl<T: Default + Clone + Copy + Debug + PartialEq> ArrayQueue<T> {
         let mut res = String::new();
         res += "Queue:";
         res += "front [";
-        for i in 0..self.get_size() {
+        for i in 0..self.array.get_size() {
             res += format!("{:?}", self.array.get(i)).as_str();
             if i != self.array.get_size() - 1 {
                 res += ", ";
@@ -52,5 +44,13 @@ impl<T: Default + Clone + Copy + Debug + PartialEq> Queue<T> for ArrayQueue<T> {
     }
     fn enqueue(&mut self, e: T) {
         self.array.add_first(e);
+    }
+
+    fn resize(&mut self, is_inc: bool) {
+        todo!()
+    }
+
+    fn get_capacity(&self) -> usize {
+        todo!()
     }
 }

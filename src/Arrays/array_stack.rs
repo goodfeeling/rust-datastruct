@@ -1,16 +1,6 @@
 use super::arr::Array;
 use std::fmt::Debug;
-
-pub trait Stack<E>
-where
-    E: Clone + Default + Debug + PartialEq,
-{
-    fn get_size(&self) -> usize;
-    fn is_empty(&self) -> bool;
-    fn push(&mut self, e: E);
-    fn pop(&mut self) -> Option<E>;
-    fn peek(&self) -> Option<E>;
-}
+use crate::Arrays::stack::Stack;
 
 pub struct ArrayStack<E: Clone + Default + Debug + PartialEq> {
     pub array: Array<E>,
@@ -31,7 +21,7 @@ impl<T: Clone + Default + Debug + PartialEq> ArrayStack<T> {
         let mut res = String::new();
         res += "Stack:";
         res += "[";
-        for i in 0..self.get_size() {
+        for i in 0..self.array.get_size() {
             res += format!("{:?}", self.array.get(i)).as_str();
             if i != self.array.get_size() - 1 {
                 res += ", ";
@@ -44,11 +34,11 @@ impl<T: Clone + Default + Debug + PartialEq> ArrayStack<T> {
 
 impl<E: Clone + Default + Debug + PartialEq> Stack<E> for ArrayStack<E> {
     fn get_size(&self) -> usize {
-        self.get_size()
+        self.array.get_size()
     }
 
     fn is_empty(&self) -> bool {
-        self.is_empty()
+        self.array.is_empty()
     }
 
     fn push(&mut self, e: E) {
